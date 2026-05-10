@@ -16,9 +16,9 @@ const int MAXGEN = 1000;
 
 std::vector<std::string> readFile(const std::string& filename);
 void createTable(const std::vector<std::string>& words,
-	statetab& stab, prefix& firstPrefix);
+     statetab& stab, prefix& firstPrefix);
 std::string generateText(const statetab& stab,
-	const prefix& firstPrefix, int maxgen);
+     const prefix& firstPrefix, int maxgen);
 bool saveFile(const std::string& filename, const std::string& text);
 
 #endif //INCLUDE_TEXTGEN_H_
