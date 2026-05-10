@@ -11,7 +11,7 @@ std::vector<std::string> readFile(const std::string& filename) {
     if (!file.is_open())
         return {};
     std::vector<std::string> words;
-    for (std::string word; file >> word; words.push_back(word)) {};
+    for (std::string word; file >> word; words.push_back(word)) {}
     return words;
 }
 
