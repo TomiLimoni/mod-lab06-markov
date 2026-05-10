@@ -3,17 +3,20 @@
 #include "textgen.h"
 #include <fstream>
 #include <cstdlib>
+#include <vector>
+#include <string>
 
 std::vector<std::string> readFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open())
         return {};
     std::vector<std::string> words;
-    for (std::string word; file >> word; words.push_back(word));
+    for (std::string word; file >> word; words.push_back(word)) {};
     return words;
 }
 
-void createTable(const std::vector<std::string>& words, statetab& stab, prefix& firstPrefix) {
+void createTable(const std::vector<std::string>& words,
+    statetab& stab, prefix& firstPrefix) {
     if (words.size() < static_cast<size_t>(NPREF))
         return;
     prefix current;
@@ -28,7 +31,8 @@ void createTable(const std::vector<std::string>& words, statetab& stab, prefix& 
     }
 }
 
-std::string generateText(const statetab& stab, const prefix& firstPrefix, int maxgen) {
+std::string generateText(const statetab& stab,
+    const prefix& firstPrefix, int maxgen) {
     if (maxgen <= 0) return "";
     std::vector<std::string> result;
     for (const auto& w : firstPrefix)

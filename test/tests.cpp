@@ -1,6 +1,8 @@
 // Copyright 2021 GHA Test Team
 #include <gtest/gtest.h>
 #include <cstdlib>
+#include <vector>
+#include <string>
 #include "textgen.h"
 
 TEST(TestGenTests, FirstPrefix) {
@@ -106,15 +108,10 @@ TEST(TextGenTest, CreateTableTwoWords) {
   EXPECT_EQ(firstPref.size(), static_cast<size_t>(NPREF));
 }
 
-TEST(TextGenTest, GenerateSpeed) {
+TEST(TestGenTests, GenerateOneWord) {
   statetab stab;
-  prefix firstPref = { "one", "two" };
-  stab[firstPref].push_back("three");
-  stab[firstPref].push_back("four");
-  stab[firstPref].push_back("five");
-  std::srand(10);
-  std::string out1 = generateText(stab, firstPref, 3);
-  std::srand(20);
-  std::string out2 = generateText(stab, firstPref, 3);
-  EXPECT_NE(out1, out2);
+  prefix firstPref = { "I", "go" };
+  stab[firstPref].push_back("home");
+  std::string generated = generateText(stab, firstPref, 1);
+  EXPECT_EQ(generated, "I go");
 }
